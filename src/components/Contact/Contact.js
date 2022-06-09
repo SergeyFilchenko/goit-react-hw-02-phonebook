@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 
-export default function Contact({ name, number, idx, onClick }) {
+export default function Contact({ name, number, onClick }) {
   return (
     <li>
       <p>
-        {idx + 1} - {name}: {number}
+        {name}: {number}
         <Button type="button" onClick={onClick} text="Delete"></Button>
       </p>
     </li>

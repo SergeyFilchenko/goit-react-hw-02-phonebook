@@ -14,13 +14,13 @@ class ContactForm extends Component {
     this.setState({ [name]: value });
   };
 
-  onBtnClick = e => {
-    e.preventDefault();
+  onBtnClick = evt => {
+    evt.preventDefault();
     const { name, number } = this.state;
     this.props.addContact(name, number);
     this.setState({
       name: '',
-      naumver: ',',
+      number: '',
     });
   };
 
@@ -42,7 +42,7 @@ class ContactForm extends Component {
             required
             className={s.input}
           />
-          <p>number</p>
+          <p>Number</p>
           <input
             onChange={handleInputChange}
             value={number}
@@ -63,7 +63,6 @@ class ContactForm extends Component {
     );
   }
 }
-
 ContactForm.propTypes = {
   addContact: PropTypes.func.isRequired,
 };
