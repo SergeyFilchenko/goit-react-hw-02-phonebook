@@ -18,18 +18,21 @@ class App extends Component {
   };
 
   addContact = (name, number) => {
-    this.state.contacts.every(contact => contact.name !== name)
-      ? this.setState(ps => ({
-          contacts: [
-            ...ps.contacts,
-            {
-              name,
-              number,
-              id: nanoid(),
-            },
-          ],
-        }))
-      : alert(`${name} is alredy in contacts`);
+    const { contacts } = this.state;
+
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+
+    contacts.find(
+      contact => newContact.name.toLowerCase() === contact.name.toLowerCase()
+    )
+      ? alert(`${newContact.name} is already in contacts`)
+      : this.setState(({ contacts }) => ({
+          contacts: [...contacts, newContact],
+        }));
   };
 
   deleteContact = id => {
